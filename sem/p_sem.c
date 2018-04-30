@@ -8,12 +8,7 @@ int main()
 	p.sem_num=0;
 	p.sem_op=-1;
 	p.sem_flg=0;
-	int ret=semop(sem_id,&p,1);
-	if(ret==-1)
-	{
-		perror("semop");
-		exit(1);
-	}
+	int ret=Semop(sem_id,&p,1);
 	printf("sem P sucess!\n");
 	return 0;
 }
