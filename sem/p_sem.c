@@ -1,8 +1,13 @@
 #include"../ipc.h"
 
-int main()
+int main(int argc,char *argv[])
 {
-	key_t sem_key=Ftok("mysem",0xff);
+	if(argc!=3)
+	{
+		printf("Error:>Please input %s pathname proj_id!\n",argv[0]);
+		exit(1);
+	}
+	key_t sem_key=Ftok(argv[1],atoi(argv[2]));
 	int sem_id=Semget(sem_key,0,0);
 	struct sembuf p;
 	p.sem_num=0;
